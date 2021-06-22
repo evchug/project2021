@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Отправить граффити
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row g-3">
+    <div class="col-md-7 col-lg-8">
+      <h3 class="mb-3">Отправить граффити</h3>
+      <form class="needs-validation" novalidate="" action="" method=post enctype=multipart/form-data>
+
+          <div class="col-12 mb-3">
+            <label for="username" class="form-label">Имя пользователя</label>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Имя пользователя" required="">
+            <div class="invalid-feedback">
+               Имя пользователя обязательно для заполнения.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="email" class="form-label">Email <span class="text-muted">(необязательно)</span></label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="address" class="form-label">Адрес <span class="text-muted">(как можно точнее)</span></label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Москва, Арбат" required="">
+            <div class="invalid-feedback">
+              Пожалуйста, введите адрес расположения граффити.
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="username" class="form-label">Название</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Название" required="">
+            <div class="invalid-feedback">
+               Название обязательно для заполнения.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="description" class="form-label">Описание</label>
+            <div class="input-group">
+              <textarea name="description" id="description" class="form-control" placeholder="Введите описание граффити" required=""></textarea>
+            <div class="invalid-feedback">
+               Описание обязательно для заполнения.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label for="grffito" class="form-label">Изображение</label><br>
+              <div class="input-group">
+                <input type=file name=file id="grffito" class="btn form-control" required="">
+                <div class="invalid-feedback">
+                Необходимо добавить изображение
+                </div>
+              </div>
+          </div>
+
+
+          <hr class="my-5">
+
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Отправить">
+      </form>
+        <br><br>
+    </div>
+    <div class="col-md-5 col-lg-4 order-md-last">
+            <p class="lead">"Для того, чтобы любое произведение считалось искусством, достаточно соблюдения двух условий:
+                <ul class="lead" style="margin-left: 0; padding-left: 0;">
+                    <li style="list-style-type: none;">1. Сам автор должен считать это искусством</li>
+                    <li style="list-style-type: none;">2. Должно быть хотя бы несколько человек, разделяющих его точку зрения.</li>
+                </ul>
+            <p class="lead" align="right">(с) петербургский поэт Дмитрий Чернышёв</p>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-179173139-1"></script>
+<script>
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+База современной эпиграфики
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <h2 class="featurette-Заголовок">{{graffiti.name}}</h2><hr>
+        <img src="{{ graffiti.file_name }}" class="img-fluid" alt={{graffiti.name}}><br>
+        <p class="lead">{{graffiti.description}}</p>
+        <p class="card-text">Найти его можно по адресу: {{graffiti.address}}</p>
+        <p class="card-text">Граффити добавлено: {{ graffiti.added }}, пользователем {{graffiti.username}}</p>
+        {% if user.is_authenticated %}
+            <div class="btn-group" style="padding: 10px;">
+                <a type="button" href="/graffito/{{ graffiti.id }}/edit" class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                <a type="button" href="/graffito/{{ graffiti.id }}/delete" class="btn btn-outline-danger">Удалить</a>
+            </div>
+        {% endif %}
+      </div>
+</div>
+{% endblock %}

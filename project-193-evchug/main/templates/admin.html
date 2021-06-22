@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Админка
+{% endblock %}
+
+{% block body %}
+    <div class="container -mt-6">
+        <h1 align="center">Граффити от пользователей</h1><br>
+        <div class="p-4 p-md-5 mb-4">
+            {% for el in graffiti %}
+                <div class="card shadow-sm" style="margin: 8px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ el.name }}</h5>
+                        <p class="card-text">{{ el.description }}</p>
+                        <p class="card-text">Найти его можно по адресу: {{el.address}}</p>
+                    </div>
+                    <div class="col-md-10" style="margin: 0 auto;">
+                      <img src="{{ el.file_name }}" class="card-img-top" alt=alt={{ el.name }}>
+                    </div>
+                    <div class="btn-group" style="padding: 10px;">
+                        <a type="button" href="/graffito/{{ el.id }}/edit" class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                        <a type="button" href="/graffito/{{ el.id }}/sucsess" class="btn btn-sm btn-outline-success">Одобрить</a>
+                        <a type="button" href="/graffito/{{ el.id }}/delete" class="btn btn-outline-danger">Удалить</a>
+                        <hr>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

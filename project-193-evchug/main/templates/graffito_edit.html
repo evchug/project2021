@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+База современной эпиграфики
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+            <img src="{{ graffiti.file_name }}" class="img-fluid" alt={{graffiti.name}}><br>
+
+            <form class="needs-validation" novalidate="" action="" method=post enctype=multipart/form-data>
+                <div class="col-12 mb-3">
+                <label for="username" class="form-label">Название</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="name" name="name" value="{{graffiti.name}}" placeholder="Введите название граффити" required="">
+{#                    <input type="text" class="form-control" id="name" name="name" value="{{ event.name }}" placeholder="Введите название мероприятия">#}
+                <div class="invalid-feedback">
+                   Название обязательно для заполнения.
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-12 mb-3">
+                <label for="description" class="form-label">Описание</label>
+                <div class="input-group">
+                  <textarea name="description" id="description" class="form-control" placeholder="Введите описание граффити" required="">
+                      {{graffiti.description}}
+                  </textarea>
+                <div class="invalid-feedback">
+                   Описание обязательно для заполнения.
+                  </div>
+                </div>
+              </div>
+
+            <div class="col-12 mb-3">
+                <label for="address" class="form-label">Адрес <span class="text-muted">(приблизительный)</span></label>
+                <input type="text" class="form-control" id="address" name="address" value="{{graffiti.address}}" required="">
+                <div class="invalid-feedback">
+                  Пожалуйста, введите адрес расположения граффити.
+                </div>
+              </div>
+
+            <div class="col-12 mb-3">
+                <p class="card-text">Граффити добавлено: {{ graffiti.added }}, пользователем {{graffiti.username}}</p>
+            </div>
+
+            <hr class="my-5">
+
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Отправить">
+            </form>
+
+      </div>
+</div>
+
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-179173139-1"></script>
+<script>
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+База современной эпиграфики
+{% endblock %}
+
+{% block body %}
+    <div class="container -mt-5">
+        <h1 class="col-md-8 fs-4">База граффити</h1><br>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for el in graffiti %}
+            <div class="col" style="margin-top: 15px;">
+              <div class="card shadow-sm">
+                  <img src={{ el.file_name }} class="rounded" alt={{ el.name }}>
+                <div class="card-body">
+                    <p class="card-text">{{ el.name }}</p>
+<!--                    <p class="card-text"><small class="text-muted">Находится: {{ el.address }}</small></p>-->
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a type="button" href="/graffito/{{ el.id }}" class="btn btn-sm btn-outline-secondary" >Посмотреть</a>
+                    </div>
+                        <small class="text-muted">{{ el.added }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
